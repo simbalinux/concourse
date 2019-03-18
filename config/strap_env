@@ -1,0 +1,34 @@
+##!/usr/bin/env bash
+
+# install docker
+# test setup of concourse 
+###################################
+
+
+set -x
+# install requirements && JAVA && Jenkins
+sudo yum -y check-update
+sudo yum -y install wget vim git lynx curl
+
+# install docker community edition start and enable 
+sudo curl -fsSL https://get.docker.com/ | sh
+sudo systemctl start docker
+sudo systemctl status docker
+sudo systemctl enable docker
+
+# add vagrant user to the docker group and remember to logout to take effect!
+sudo usermod -aG docker vagrant
+docker version
+
+
+# install docker compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0-rc3/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+check the version
+docker-compose --version
+
+
+sudo wget https://github.com/concourse/fly/releases/download/v4.2.5/fly_linux_amd64
+sudo chmod +x fly_linux_amd64 && sudo mv fly_linux_amd64 /usr/local/bin/fly
+
