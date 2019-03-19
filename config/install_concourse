@@ -1,6 +1,14 @@
-#!/usr/bin/env bash
+##!/usr/bin/env bash
 
 set -x 
 wget https://raw.githubusercontent.com/starkandwayne/concourse-tutorial/master/docker-compose.yml
 docker-compose up -d
+#
+#
+#
+echo 'fly --target tutorial login --concourse-url http://127.0.0.1:8080 -u admin -p admin 
+fly --target tutorial sync 
+git clone https://github.com/starkandwayne/concourse-tutorial.git
+cd concourse-tutorial/tutorials/basic/task-hello-world
+fly -t tutorial execute -c task_hello_world.yml' > $HOME/helloworld.sh 
 

@@ -7,8 +7,8 @@
 
 set -x
 # install requirements && JAVA && Jenkins
-sudo yum -y check-update
-sudo yum -y install wget vim git lynx curl
+sudo apt-get update -y 
+sudo apt-get install wget vim git lynx curl -y
 
 # install docker community edition start and enable 
 sudo curl -fsSL https://get.docker.com/ | sh
@@ -29,6 +29,6 @@ check the version
 docker-compose --version
 
 
-sudo wget https://github.com/concourse/fly/releases/download/v4.2.5/fly_linux_amd64
+sudo wget https://github.com/concourse/fly/releases/download/v4.2.1%2Bfix.1/fly_linux_amd64 
 sudo chmod +x fly_linux_amd64 && sudo mv fly_linux_amd64 /usr/local/bin/fly
 
